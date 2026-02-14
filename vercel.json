@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd mcp-server && pnpm install && pnpm build",
+  "outputDirectory": "mcp-server/.next",
+  "installCommand": "cd mcp-server && pnpm install",
+  "framework": null
+}
