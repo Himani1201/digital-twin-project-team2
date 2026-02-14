@@ -176,86 +176,88 @@ export default function InterviewPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-start justify-center py-12 px-4">
-      <div className="w-full max-w-4xl">
-        <h1 className="text-4xl font-bold mb-2 text-gray-900 text-center">
-          AI-Powered Interview System
-        </h1>
-        <p className="text-gray-600 text-center mb-8">
-          Select a job posting or enter your own to begin the interview
-        </p>
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100 p-4 flex items-center justify-center">
+      <div className="w-full max-w-5xl">
+        <div className="text-center mb-8">
+          <h1 className="text-5xl font-extrabold mb-3 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
+            🎤 AI-Powered Interview System
+          </h1>
+          <p className="text-gray-700 text-lg font-medium">
+            Select a job posting or enter your own to begin the interview
+          </p>
+        </div>
 
         {/* Job Description Input */}
         {!isInterviewing && messages.length === 0 && (
-          <div className="bg-white rounded-xl shadow-lg p-8 mb-6">
-            <h2 className="text-2xl font-semibold mb-4 text-gray-800">
-              Select Job Posting
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-8 mb-6 border-2 border-purple-200">
+            <h2 className="text-3xl font-bold mb-6 text-transparent bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text">
+              🎯 Select Job Posting
             </h2>
             
             {/* Job Selection Buttons */}
-            <div className="grid grid-cols-2 gap-3 mb-6">
+            <div className="grid grid-cols-2 gap-4 mb-6">
               <button
                 onClick={() => loadJobPosting('job1')}
-                className="bg-blue-50 hover:bg-blue-100 border-2 border-blue-200 rounded-lg p-4 text-left transition"
+                className="group bg-gradient-to-br from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white rounded-xl p-6 text-left transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl"
               >
-                <div className="font-semibold text-blue-900">Job 1</div>
-                <div className="text-sm text-blue-700">Data Analyst - ABC</div>
+                <div className="font-bold text-xl mb-1">📊 Job 1</div>
+                <div className="text-sm text-blue-50">Data Analyst - ABC</div>
               </button>
               <button
                 onClick={() => loadJobPosting('job2')}
-                className="bg-green-50 hover:bg-green-100 border-2 border-green-200 rounded-lg p-4 text-left transition"
+                className="group bg-gradient-to-br from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white rounded-xl p-6 text-left transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl"
               >
-                <div className="font-semibold text-green-900">Job 2</div>
-                <div className="text-sm text-green-700">App Support - Plenti</div>
+                <div className="font-bold text-xl mb-1">🛠️ Job 2</div>
+                <div className="text-sm text-green-50">App Support - Plenti</div>
               </button>
               <button
                 onClick={() => loadJobPosting('job3')}
-                className="bg-purple-50 hover:bg-purple-100 border-2 border-purple-200 rounded-lg p-4 text-left transition"
+                className="group bg-gradient-to-br from-purple-400 to-purple-600 hover:from-purple-500 hover:to-purple-700 text-white rounded-xl p-6 text-left transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl"
               >
-                <div className="font-semibold text-purple-900">Job 3</div>
-                <div className="text-sm text-purple-700">Oracle Engineer - PeopleScout</div>
+                <div className="font-bold text-xl mb-1">🗄️ Job 3</div>
+                <div className="text-sm text-purple-50">Oracle Engineer - PeopleScout</div>
               </button>
               <button
                 onClick={() => loadJobPosting('job4')}
-                className="bg-orange-50 hover:bg-orange-100 border-2 border-orange-200 rounded-lg p-4 text-left transition"
+                className="group bg-gradient-to-br from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-white rounded-xl p-6 text-left transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl"
               >
-                <div className="font-semibold text-orange-900">Job 4</div>
-                <div className="text-sm text-orange-700">Support Specialist - Orbus</div>
+                <div className="font-bold text-xl mb-1">☁️ Job 4</div>
+                <div className="text-sm text-orange-50">Support Specialist - Orbus</div>
               </button>
             </div>
 
-            <h2 className="text-xl font-semibold mb-3 text-gray-800">
-              Job Description
+            <h2 className="text-2xl font-bold mb-4 text-gray-800">
+              📝 Job Description
             </h2>
             <textarea
-              className="w-full h-48 border-2 border-gray-300 rounded-lg p-4 mb-4 text-gray-900 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition resize-y"
+              className="w-full h-48 border-3 border-purple-300 rounded-xl p-4 mb-6 text-gray-900 text-sm focus:border-purple-500 focus:ring-4 focus:ring-purple-200 transition resize-y shadow-inner"
               placeholder="Click a job above or paste your own job description here..."
               value={jobDescription}
               onChange={(e) => setJobDescription(e.target.value)}
             />
             <button
               onClick={startInterview}
-              className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-semibold text-lg shadow-md hover:shadow-lg"
+              className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 text-white px-8 py-4 rounded-xl hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 transition-all duration-300 font-bold text-xl shadow-xl hover:shadow-2xl transform hover:scale-105"
             >
-              Start Interview
+              🚀 Start Interview
             </button>
           </div>
         )}
 
         {/* Interview Progress */}
         {isInterviewing && (
-          <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-8 mb-6 border-2 border-pink-200">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-semibold text-gray-800">
-                Interview in Progress...
+              <h2 className="text-3xl font-bold text-transparent bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text">
+                ⏳ Interview in Progress...
               </h2>
-              <span className="text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
+              <span className="text-sm font-bold text-white bg-gradient-to-r from-pink-500 to-purple-500 px-4 py-2 rounded-full shadow-lg">
                 Question {currentQuestion} of 5
               </span>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-3">
+            <div className="w-full bg-gray-200 rounded-full h-4 shadow-inner">
               <div
-                className="bg-blue-600 h-3 rounded-full transition-all duration-300 shadow-sm"
+                className="bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 h-4 rounded-full transition-all duration-500 shadow-lg animate-pulse"
                 style={{ width: `${(currentQuestion / 5) * 100}%` }}
               />
             </div>
@@ -263,34 +265,39 @@ export default function InterviewPage() {
         )}
 
         {/* Interview Transcript */}
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-6">
-          <h2 className="text-2xl font-semibold mb-6 text-gray-800">
-            Interview Transcript
+        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-8 mb-6 border-2 border-blue-200">
+          <h2 className="text-3xl font-bold mb-6 text-transparent bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text">
+            💬 Interview Transcript
           </h2>
-          <div className="space-y-4 max-h-[32rem] overflow-y-auto">
+          <div className="space-y-4 max-h-[32rem] overflow-y-auto pr-2">
             {messages.length === 0 ? (
-              <p className="text-gray-500 text-center py-12 text-lg">
-                No interview started yet
-              </p>
+              <div className="text-center py-16">
+                <div className="text-6xl mb-4">🎙️</div>
+                <p className="text-gray-500 text-xl font-medium">
+                  No interview started yet
+                </p>
+              </div>
             ) : (
               messages.map((msg, idx) => (
                 <div
                   key={idx}
-                  className={`p-5 rounded-xl ${
+                  className={`p-6 rounded-2xl transform transition-all duration-300 hover:scale-102 ${
                     msg.role === 'interviewer'
-                      ? 'bg-blue-50 border-l-4 border-blue-500 shadow-sm'
-                      : 'bg-green-50 border-l-4 border-green-500 shadow-sm'
+                      ? 'bg-gradient-to-br from-blue-50 to-blue-100 border-l-4 border-blue-500 shadow-lg'
+                      : 'bg-gradient-to-br from-green-50 to-green-100 border-l-4 border-green-500 shadow-lg'
                   }`}
                 >
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="font-bold text-gray-900 text-lg">
+                  <div className="flex justify-between items-start mb-3">
+                    <span className={`font-black text-xl ${
+                      msg.role === 'interviewer' ? 'text-blue-700' : 'text-green-700'
+                    }`}>
                       {msg.role === 'interviewer' ? '💼 Interviewer' : '🤖 Digital Twin'}
                     </span>
-                    <span className="text-xs text-gray-500">
+                    <span className="text-xs font-semibold text-gray-500 bg-white px-3 py-1 rounded-full">
                       {msg.timestamp.toLocaleTimeString()}
                     </span>
                   </div>
-                  <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">{msg.content}</p>
+                  <p className="text-gray-800 whitespace-pre-wrap leading-relaxed font-medium">{msg.content}</p>
                 </div>
               ))
             )}
@@ -300,32 +307,38 @@ export default function InterviewPage() {
         {/* Interview Result */}
         {result && (
           <div
-            className={`rounded-xl shadow-lg p-8 ${
+            className={`rounded-2xl shadow-2xl p-10 border-4 transform transition-all duration-500 ${
               result.decision === 'pass'
-                ? 'bg-green-50 border-2 border-green-500'
-                : 'bg-red-50 border-2 border-red-500'
+                ? 'bg-gradient-to-br from-green-50 to-emerald-100 border-green-500'
+                : 'bg-gradient-to-br from-red-50 to-rose-100 border-red-500'
             }`}
           >
-            <h2 className="text-3xl font-bold mb-6 text-gray-900 text-center">
+            <h2 className="text-5xl font-black mb-6 text-center">
               {result.decision === 'pass' ? '✅ PASS' : '❌ FAIL'}
             </h2>
-            <div className="mb-6">
-              <div className="flex justify-between mb-3">
-                <span className="font-bold text-gray-800 text-lg">Overall Score:</span>
-                <span className="font-bold text-gray-900 text-xl">{result.score}/100</span>
+            <div className="mb-8">
+              <div className="flex justify-between mb-4">
+                <span className="font-black text-2xl text-gray-800">🎯 Overall Score:</span>
+                <span className={`font-black text-3xl ${
+                  result.decision === 'pass' ? 'text-green-600' : 'text-red-600'
+                }`}>{result.score}/100</span>
               </div>
-              <div className="w-full bg-gray-300 rounded-full h-4">
+              <div className="w-full bg-gray-300 rounded-full h-6 shadow-inner">
                 <div
-                  className={`h-4 rounded-full transition-all ${
-                    result.decision === 'pass' ? 'bg-green-600' : 'bg-red-600'
+                  className={`h-6 rounded-full transition-all duration-1000 shadow-lg ${
+                    result.decision === 'pass' 
+                      ? 'bg-gradient-to-r from-green-400 to-emerald-600' 
+                      : 'bg-gradient-to-r from-red-400 to-rose-600'
                   }`}
                   style={{ width: `${result.score}%` }}
                 />
               </div>
             </div>
-            <div className="bg-white p-6 rounded-lg border-2 border-gray-200 shadow-inner">
-              <h3 className="font-bold mb-3 text-gray-800 text-lg">Recommendation:</h3>
-              <p className="text-gray-700 leading-relaxed">{result.recommendation}</p>
+            <div className="bg-white p-8 rounded-xl border-2 border-gray-200 shadow-xl">
+              <h3 className="font-black mb-4 text-gray-800 text-2xl flex items-center gap-2">
+                📋 Recommendation:
+              </h3>
+              <p className="text-gray-700 leading-relaxed text-lg">{result.recommendation}</p>
             </div>
             <button
               onClick={() => {
@@ -333,9 +346,9 @@ export default function InterviewPage() {
                 setResult(null)
                 setJobDescription('')
               }}
-              className="mt-6 w-full bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition font-semibold shadow-md hover:shadow-lg"
+              className="mt-8 w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all duration-300 font-bold text-xl shadow-xl hover:shadow-2xl transform hover:scale-105"
             >
-              Start New Interview
+              🔄 Start New Interview
             </button>
           </div>
         )}
