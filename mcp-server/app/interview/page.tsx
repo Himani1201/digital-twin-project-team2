@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { loadAllJobPostings, type JobPosting } from '@/app/actions/load-job-postings'
 
 interface Message {
   role: 'interviewer' | 'candidate'
@@ -14,65 +15,36 @@ interface InterviewResult {
   score: number
 }
 
-// Job posting data - Short prompts that reference the embedded job postings
-const JOB_POSTINGS = {
-  job1: `Using my digital twin MCP server data, conduct a comprehensive interview simulation for the Data Analyst position at Australian Broadcasting Corporation (ABC) in Sydney. 
-
-Key role requirements:
-- SQL and cloud data warehouse experience (Snowflake)
-- Data profiling, lineage mapping, source-to-target analysis
-- Modern data stacks and BI tools
-- Agile project delivery experience
-- Strong communication with technical and business stakeholders
-
-Please ask relevant technical and behavioral questions based on these requirements, and provide detailed feedback on my fit for this role with improvement recommendations.`,
-  
-  job2: `Using my digital twin MCP server data, conduct a comprehensive interview simulation for the Application Support Engineer position at Plenti (fintech) in Sydney.
-
-Key role requirements:
-- 3+ years in technical support with problem-solving skills
-- Strong SQL proficiency for data analysis
-- Scripting skills (Python, Bash, PowerShell)
-- Familiarity with .Net/C# and code reading
-- Experience with log analysis tools (Datadog)
-- Working with Engineering teams
-
-Please ask relevant technical and behavioral questions based on these requirements, and provide detailed feedback on my fit for this role with improvement recommendations.`,
-
-  job3: `Using my digital twin MCP server data, conduct a comprehensive interview simulation for the Oracle Application Support Engineer (Level 2/3) position at PeopleScout in Sydney.
-
-Key role requirements:
-- Solid experience with relational databases and SQL
-- Developing Oracle PL/SQL stored procedures
-- Strong understanding of database objects and structures
-- Performance bottleneck identification and optimization
-- Web application/SaaS experience
-- Analytical thinking and problem solving
-
-Please ask relevant technical and behavioral questions based on these requirements, and provide detailed feedback on my fit for this role with improvement recommendations.`,
-
-  job4: `Using my digital twin MCP server data, conduct a comprehensive interview simulation for the Application Support Specialist position at Orbus Software in Sydney.
-
-Key role requirements:
-- 2+ years in application/technical support
-- Supporting cloud-based applications (Microsoft Azure)
-- Microsoft 365, SharePoint, Azure AD administration
-- RESTful API troubleshooting
-- Windows Server, SQL Server, and IIS knowledge
-- ITIL-aligned service desk experience
-
-Please ask relevant technical and behavioral questions based on these requirements, and provide detailed feedback on my fit for this role with improvement recommendations.`
-}
-
 export default function InterviewPage() {
+  const [jobPostings, setJobPostings] = useState<JobPosting[]>([])
+  const [loadingJobs, setLoadingJobs] = useState(true)
   const [jobDescription, setJobDescription] = useState('')
   const [messages, setMessages] = useState<Message[]>([])
   const [isInterviewing, setIsInterviewing] = useState(false)
   const [result, setResult] = useState<InterviewResult | null>(null)
   const [currentQuestion, setCurrentQuestion] = useState(0)
 
-  const loadJobPosting = (jobKey: keyof typeof JOB_POSTINGS) => {
-    setJobDescription(JOB_POSTINGS[jobKey])
+  // Load job postings on component mount
+  useEffect(() => {
+    const fetchJobPostings = async () => {
+      try {
+        const postings = await loadAllJobPostings()
+        setJobPostings(postings)
+      } catch (error) {
+        console.error('Error loading job postings:', error)
+      } finally {
+        setLoadingJobs(false)
+      }
+    }
+    
+    fetchJobPostings()
+  }, [])
+
+  const loadJobPosting = (jobId: string) => {
+    const posting = jobPostings.find(p => p.id === jobId)
+    if (posting) {
+      setJobDescription(posting.content)
+    }
   }
 
   const generateJobSpecificQuestions = (jobDesc: string): string[] => {
@@ -356,36 +328,51 @@ ${decision === 'pass' ? '\\n✅ **For Hiring Team:**\\n   1. Schedule technical 
             </h2>
             
             {/* Job Selection Buttons */}
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              <button
-                onClick={() => loadJobPosting('job1')}
-                className="group bg-gradient-to-br from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white rounded-xl p-6 text-left transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl"
-              >
-                <div className="font-bold text-xl mb-1">📊 Job 1</div>
-                <div className="text-sm text-blue-50">Data Analyst - ABC</div>
-              </button>
-              <button
-                onClick={() => loadJobPosting('job2')}
-                className="group bg-gradient-to-br from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white rounded-xl p-6 text-left transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl"
-              >
-                <div className="font-bold text-xl mb-1">🛠️ Job 2</div>
-                <div className="text-sm text-green-50">App Support - Plenti</div>
-              </button>
-              <button
-                onClick={() => loadJobPosting('job3')}
-                className="group bg-gradient-to-br from-purple-400 to-purple-600 hover:from-purple-500 hover:to-purple-700 text-white rounded-xl p-6 text-left transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl"
-              >
-                <div className="font-bold text-xl mb-1">🗄️ Job 3</div>
-                <div className="text-sm text-purple-50">Oracle Engineer - PeopleScout</div>
-              </button>
-              <button
-                onClick={() => loadJobPosting('job4')}
-                className="group bg-gradient-to-br from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-white rounded-xl p-6 text-left transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl"
-              >
-                <div className="font-bold text-xl mb-1">☁️ Job 4</div>
-                <div className="text-sm text-orange-50">Support Specialist - Orbus</div>
-              </button>
-            </div>
+            {loadingJobs ? (
+              <div className="text-center py-8 text-gray-600">
+                <div className="animate-pulse">Loading job postings...</div>
+              </div>
+            ) : jobPostings.length === 0 ? (
+              <div className="text-center py-8 text-gray-600">
+                No job postings found in job-postings/ directory.
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                {jobPostings.map((posting, index) => {
+                  // Cycle through different gradient colors
+                  const colors = [
+                    'from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700',
+                    'from-green-400 to-green-600 hover:from-green-500 hover:to-green-700',
+                    'from-purple-400 to-purple-600 hover:from-purple-500 hover:to-purple-700',
+                    'from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700',
+                    'from-pink-400 to-pink-600 hover:from-pink-500 hover:to-pink-700',
+                    'from-indigo-400 to-indigo-600 hover:from-indigo-500 hover:to-indigo-700',
+                    'from-red-400 to-red-600 hover:from-red-500 hover:to-red-700',
+                    'from-teal-400 to-teal-600 hover:from-teal-500 hover:to-teal-700',
+                  ]
+                  const colorClass = colors[index % colors.length]
+                  const textColorClass = index % 8 === 0 ? 'text-blue-50' : 
+                                        index % 8 === 1 ? 'text-green-50' : 
+                                        index % 8 === 2 ? 'text-purple-50' :
+                                        index % 8 === 3 ? 'text-orange-50' :
+                                        index % 8 === 4 ? 'text-pink-50' :
+                                        index % 8 === 5 ? 'text-indigo-50' :
+                                        index % 8 === 6 ? 'text-red-50' : 'text-teal-50'
+                  
+                  return (
+                    <button
+                      key={posting.id}
+                      onClick={() => loadJobPosting(posting.id)}
+                      className={`group bg-gradient-to-br ${colorClass} text-white rounded-xl p-6 text-left transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl`}
+                    >
+                      <div className="font-bold text-xl mb-2">{posting.title}</div>
+                      <div className={`text-sm ${textColorClass} mb-1`}>{posting.company}</div>
+                      <div className={`text-xs ${textColorClass} opacity-90`}>{posting.shortDescription}</div>
+                    </button>
+                  )
+                })}
+              </div>
+            )}
 
             <h2 className="text-2xl font-bold mb-4 text-gray-800">
               📝 Job Description
