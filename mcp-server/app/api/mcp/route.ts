@@ -1,5 +1,6 @@
 // app/api/mcp/route.ts
 import { NextRequest, NextResponse } from 'next/server'
+import { ragQuery } from '@/lib/digital-twin'
 
 export async function POST(request: NextRequest) {
   try {
@@ -48,6 +49,75 @@ export async function POST(request: NextRequest) {
                 }
               }
             ]
+          }
+        })
+      }
+
+      // Handle call_tool request
+      if (body.method === 'tools/call') {
+        const { name, arguments: args } = body.params || {}
+
+        if (name === 'query_digital_twin') {
+          try {
+            // Support both 'question' and 'query' parameter names for flexibility
+            const question = args?.question || args?.query
+            
+            if (!question) {
+              return NextResponse.json({
+                jsonrpc: '2.0',
+                id: body.id,
+                error: {
+                  code: -32602,
+                  message: 'Missing required parameter: question'
+                }
+              })
+            }
+
+            console.log('Executing query_digital_twin with question:', question)
+            const result = await ragQuery(question, true)
+
+            if (result.success) {
+              return NextResponse.json({
+                jsonrpc: '2.0',
+                id: body.id,
+                result: {
+                  content: [
+                    {
+                      type: 'text',
+                      text: result.response
+                    }
+                  ]
+                }
+              })
+            } else {
+              return NextResponse.json({
+                jsonrpc: '2.0',
+                id: body.id,
+                error: {
+                  code: -32000,
+                  message: result.error || 'Query failed'
+                }
+              })
+            }
+          } catch (error) {
+            console.error('Error executing query_digital_twin:', error)
+            return NextResponse.json({
+              jsonrpc: '2.0',
+              id: body.id,
+              error: {
+                code: -32000,
+                message: error instanceof Error ? error.message : 'Tool execution failed'
+              }
+            })
+          }
+        }
+
+        return NextResponse.json({
+          jsonrpc: '2.0',
+          id: body.id,
+          error: {
+            code: -32601,
+            message: `Tool not found: ${name}`
           }
         })
       }
