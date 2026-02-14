@@ -182,15 +182,7 @@ ${decision === 'pass' ? '✅ RECOMMENDATION: HIRE' : '❌ RECOMMENDATION: DO NOT
 🎯 Overall Suitability Score: ${score}/100 (${decision === 'pass' ? 'Strong Match' : 'Below Threshold'})
 
 **Key Reasons:**
-${decision === 'pass' 
-  ? `• Demonstrated strong technical competency in key areas
-• Relevant experience aligns well with job requirements
-• Excellent communication and problem-solving skills
-• Cultural fit indicators are positive` 
-  : `• Technical skills do not fully meet minimum requirements
-• Experience gaps in critical areas
-• Additional training would be needed
-• Consider for junior positions or with skill development plan`}
+${decision === 'pass' ? '• Demonstrated strong technical competency in key areas • Relevant experience aligns well with job requirements • Excellent communication and problem-solving skills • Cultural fit indicators are positive' : '• Technical skills do not fully meet minimum requirements • Experience gaps in critical areas • Additional training would be needed • Consider for junior positions or with skill development plan'}
 
 **DETAILED BREAKDOWN**
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -219,26 +211,15 @@ ${decision === 'pass'
    • Start Date: ${decision === 'pass' ? 'Flexible, can start soon' : 'May need notice period'}
 
 ⚠️ **Risk Factors Identified:**
-${decision === 'pass'
-  ? `   • LOW RISK: Candidate shows strong indicators
-   • Minor gaps can be addressed through onboarding
-   • References should be checked as standard process`
-  : `   • MODERATE-HIGH RISK: Significant skill gaps
-   • May require 3-6 months additional training
-   • Consider if no better candidates available`}
+${decision === 'pass' ? '   • LOW RISK: Candidate shows strong indicators • Minor gaps can be addressed through onboarding • References should be checked as standard process' : '   • MODERATE-HIGH RISK: Significant skill gaps • May require 3-6 months additional training • Consider if no better candidates available'}
 
 **IMPROVEMENT AREAS**
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 🎯 **Skills Gaps to Address:**
    ${decision === 'pass' 
-     ? '• Deepen knowledge in [specific tool mentioned in job]
-   • Consider certification in cloud platforms
-   • Continue building leadership experience'
-     : '• Critical gap: Advanced SQL/PL-SQL proficiency
-   • Need more hands-on cloud platform experience
-   • Strengthen problem-solving methodology
-   • Improve communication clarity'}
+     ? '• Deepen knowledge in [specific tool mentioned in job] • Consider certification in cloud platforms • Continue building leadership experience'
+     : '• Critical gap: Advanced SQL/PL-SQL proficiency • Need more hands-on cloud platform experience • Strengthen problem-solving methodology • Improve communication clarity'}
 
 📝 **Missing Profile Information:**
    • Specific metrics/KPIs from recent projects
@@ -254,32 +235,7 @@ ${decision === 'pass'
 
 **RECOMMENDED NEXT STEPS**
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-${decision === 'pass'
-  ? `
-✅ **For Hiring Team:**
-   1. Schedule final round interview with hiring manager
-   2. Conduct technical assessment/coding challenge
-   3. Check professional references
-   4. Prepare offer package within approved range
-   5. Expected timeline: 1-2 weeks to decision
-
-✅ **For Candidate:**
-   1. Prepare for technical deep-dive session
-   2. Review specific technologies mentioned in job posting
-   3. Prepare questions about team structure and projects
-   4. Have references ready to provide`
-  : `
-❌ **For Hiring Team:**
-   1. Send polite rejection email
-   2. Keep profile on file for junior positions
-   3. Consider if willing to invest in training program
-   4. Continue search for candidates with stronger match
-
-📚 **For Candidate (if feedback provided):**
-   1. Upskill in identified gap areas
-   2. Gain more hands-on project experience
-   3. Consider relevant certifications
-   4. Re-apply after 6-12 months of focused development`}
+${decision === 'pass' ? '\\n✅ **For Hiring Team:** 1. Schedule final round interview with hiring manager 2. Conduct technical assessment/coding challenge 3. Check professional references 4. Prepare offer package within approved range 5. Expected timeline: 1-2 weeks to decision\\n\\n✅ **For Candidate:** 1. Prepare for technical deep-dive session 2. Review specific technologies mentioned in job posting 3. Prepare questions about team structure and projects 4. Have references ready to provide' : '\\n❌ **For Hiring Team:** 1. Send polite rejection email 2. Keep profile on file for junior positions 3. Consider if willing to invest in training program 4. Continue search for candidates with stronger match\\n\\n📚 **For Candidate (if feedback provided):** 1. Upskill in identified gap areas 2. Gain more hands-on project experience 3. Consider relevant certifications 4. Re-apply after 6-12 months of focused development'}
 
 **═══════════════════════════════════════════════**
 📅 Report Generated: ${new Date().toLocaleString()}
