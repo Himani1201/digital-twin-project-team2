@@ -176,8 +176,8 @@ export default function InterviewPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4">
-      <div className="max-w-3xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-start justify-center py-12 px-4">
+      <div className="w-full max-w-4xl">
         <h1 className="text-4xl font-bold mb-2 text-gray-900 text-center">
           AI-Powered Interview System
         </h1>
