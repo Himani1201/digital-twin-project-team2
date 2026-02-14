@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "digital-twin-mcp": {
+      "type": "http",
+      "url": "https://digital-twin-project-team2-1.vercel.app/api/mcp"
+    }
+  }
+}
