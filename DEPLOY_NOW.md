@@ -28,6 +28,8 @@
    Output Directory: .next
    Install Command: pnpm install
    ```
+   
+   **Note**: The `vercel.json` file already configures these settings automatically!
 
 4. **Add Environment Variables** (IMPORTANT!):
    - Click "Environment Variables"

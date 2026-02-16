@@ -173,14 +173,18 @@ The project includes a `vercel.json` configuration file at the root:
 
 ```json
 {
-  "buildCommand": "cd mcp-server && pnpm install && pnpm build",
-  "outputDirectory": "mcp-server/.next",
-  "installCommand": "cd mcp-server && pnpm install",
-  "framework": null
+  "buildCommand": "pnpm install && pnpm build",
+  "outputDirectory": ".next",
+  "installCommand": "pnpm install",
+  "framework": "nextjs",
+  "rootDirectory": "mcp-server"
 }
 ```
 
-This ensures Vercel builds from the `mcp-server` subdirectory.
+**Key Configuration**:
+- `rootDirectory`: Points to `mcp-server` subdirectory where Next.js app lives
+- `framework`: Set to `nextjs` for proper framework detection
+- Build commands run from within the `rootDirectory` automatically
 
 ### Environment Variables in Vercel
 
