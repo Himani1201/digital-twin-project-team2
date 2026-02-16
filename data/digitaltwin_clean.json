@@ -340,6 +340,25 @@
   },
 
   "interview_prep": {
+    "response_strategies": {
+      "handling_skill_gaps": {
+        "when_to_use": "When asked about tools, technologies, or experiences not in your background",
+        "approach": "Acknowledge the gap honestly, then pivot to demonstrate learning agility and growth mindset",
+        "template_response": "I don't currently have direct experience with [specific skill/tool/technology]. However, as you can see from my past learning experiences and career transitions, I've always found it challenging and enthusiastic to shift my career direction and upskill myself. For example, I successfully transitioned from Oracle Applications to AWS cloud support, and more recently invested a year in structured data analytics learning including Power BI, Python, and vector databases. Gaining this additional skill or getting to work on this new tool would be definitely challenging as well as encouraging to me. I'm confident in my ability to learn quickly and apply new knowledge effectively.",
+        "key_points_to_emphasize": [
+          "Honest acknowledgment - builds trust and credibility",
+          "Evidence of learning agility - cite specific examples of past transitions",
+          "Growth mindset - express genuine enthusiasm for learning",
+          "Track record - reference successful self-learning projects",
+          "Confidence in transferable skills - show how you approach learning"
+        ],
+        "examples": {
+          "tableau": "I don't currently have Tableau experience, though I'm proficient in Power BI with similar data visualization principles. As you can see from my background, I successfully transitioned from Oracle Applications to AWS cloud support, and more recently invested a year mastering Power BI, DAX, and data modeling. Learning Tableau would leverage my existing BI foundation while expanding my toolset. I'm enthusiastic about the challenge and confident I can become productive quickly.",
+          "machine_learning": "I don't have formal machine learning experience, but I've worked with RAG systems, vector databases, and LLM integration in my recent Digital Twin project. As demonstrated by my career transitions and self-learning track record, I find it challenging and encouraging to expand into new technical areas. Gaining ML skills would complement my data analysis background and align perfectly with my interest in AI-driven analytics.",
+          "salesforce": "I haven't administered Salesforce directly, though I have extensive experience with CRM-style datasets, data validation, and reporting accuracy. My 5+ years with Oracle Applications and recent AWS support work show my ability to quickly learn enterprise platforms. I'm genuinely enthusiastic about expanding into Salesforce administration and confident my ERP background provides a strong foundation."
+        }
+      }
+    },
     "behavioral": [
       {
         "question": "How do you differentiate between customer misconfiguration and an AWS service issue?",
@@ -437,6 +456,36 @@
           ],
           "result": "Stakeholders understood the insights, engaged with analysis, and used findings to prioritize operational improvements. Ad hoc analysis requests increased due to confidence in clarity."
         }
+      },
+      {
+        "question": "Tell me about a time you used data analysis to discover an unexpected insight that led to action.",
+        "answer_star": {
+          "situation": "Customer reported sudden, recurring downtime of their production RDS instance causing business disruption. Customer wanted to understand the root cause.",
+          "task": "Analyze system data to identify why the RDS instance was failing over and provide actionable recommendations.",
+          "action": [
+            "Reviewed instance events logs and identified failover pattern occurring at the same time every week",
+            "Queried Performance Insights and Enhanced Monitoring metrics to correlate timing with resource utilization",
+            "Analyzed write IOPS patterns and discovered massive spikes exceeding instance capacity during failover windows",
+            "Cross-referenced spike timing with customer's operational schedule",
+            "Discussed findings with customer to confirm scheduled operations during that time window",
+            "Discovered customer had a scheduled concurrent program running weekly that they were unaware was causing the issue"
+          ],
+          "result": "Customer identified the previously unknown scheduled program as root cause. They rescheduled the job to off-peak hours and increased instance IOPS capacity. Failovers stopped completely, restoring system reliability and preventing future business disruptions. This demonstrated the value of pattern recognition and metric-driven troubleshooting in preventing recurring incidents.",
+          "analytical_approach": {
+            "pattern_recognition": "Noticed temporal consistency (same time weekly) rather than treating as random events",
+            "data_correlation": "Combined event logs, Performance Insights, and Enhanced Monitoring to build complete picture",
+            "hypothesis_testing": "Used data to validate suspected resource exhaustion as failure mechanism",
+            "stakeholder_collaboration": "Engaged customer with data-backed findings to uncover business context"
+          },
+          "skills_demonstrated": [
+            "SQL querying for log analysis and metric retrieval",
+            "Time-series data analysis and pattern detection",
+            "Performance metrics interpretation (IOPS, CPU, memory)",
+            "Root cause analysis methodology",
+            "Data-driven communication with non-technical stakeholders",
+            "Translating technical metrics into business impact"
+          ]
+        }
       }
     ],
 
@@ -496,9 +545,10 @@
   },
 
   "career_transition": {
-    "from": "Cloud Support Engineer",
+    "from": "Cloud Support Engineer (last role: Aug 2022 - Mar 2025)",
     "to": "Data Analyst / Junior BI Analyst",
-    "transition_timeline": "1 year of structured learning and hands-on analytics projects",
+    "current_employment_status": "NOT CURRENTLY EMPLOYED - Unemployed since March 2025, actively seeking opportunities",
+    "transition_timeline": "1 year of structured learning and hands-on analytics projects (Mar 2025 - present)",
     "evidence_of_transition": [
       "1 year of hands-on Power BI development (4-6 production dashboards)",
       "Advanced Excel proficiency with Power Query, PivotTables, advanced formulas",
@@ -518,6 +568,6 @@
       "ownership_mindset": "Applied to data quality responsibility and validation discipline",
       "reporting_experience": "5+ years with Oracle translates to understanding business reporting requirements"
     },
-    "readiness_level": "Junior BI/Data Analyst - foundational technical skills solid (Power BI, SQL, Excel), ready for structured growth in Data Analytics / Operations Analytics / Data Engineer and enterprise data governance"
+    "readiness_assessment": "READY FOR Junior BI/Data Analyst roles - foundational technical skills solid (Power BI, SQL, Excel), prepared for structured growth in Data Analytics / Operations Analytics / Data Engineer and enterprise data governance. NOT currently employed in this capacity."
   }
 }

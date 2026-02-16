@@ -33,13 +33,49 @@ Each team member contributes through:
 - Task ownership via ClickUp
 - Peer reviews and feedback
 - GitHub history is used to track individual contributions.
-### Repository Structure (Initial)
-/docs        → Planning and documentation
+### Repository Structure
+```
+digital-twin-project-team2/
+├── docs/                          # Documentation
+│   ├── design.md                  # System architecture
+│   ├── prd.md                     # Product requirements
+│   ├── VECTOR_SETUP_GUIDE.md      # Vector database setup
+│   ├── VECTOR_IMPLEMENTATION_SUMMARY.md
+│   ├── VSCODE_AGENT_TESTING_GUIDE.md  # ⭐ Testing guide
+│   ├── QUICK_TEST_CHECKLIST.md    # Quick reference
+│   └── WEB_UI_VS_AGENT_MODE.md    # Implementation comparison
+├── data/                          # Profile data
+│   ├── digitaltwin.json           # Professional profile
+│   └── digitaltwin_clean.json
+├── job-postings/                  # Test job postings
+│   ├── job1.md, job2.md, etc.
+├── scripts/                       # Python utilities
+│   ├── embed_digitaltwin.py       # Load profile to vector DB
+│   ├── digital_twin_rag.py        # Interactive RAG testing
+│   └── verify_setup.py            # Environment verification
+├── mcp-server/                    # Next.js MCP Server
+│   ├── app/api/mcp/route.ts       # MCP endpoint
+│   ├── lib/digital-twin.ts        # RAG logic
+│   └── app/interview/page.tsx     # Web UI (optional)
+├── .vscode/
+│   └── mcp.json                   # VS Code MCP configuration
+└── requirements.txt               # Python dependencies
+```
 
-/src         → Source code (to be added)
+### Quick Start - Testing in VS Code Agent Mode
 
-/data        → Sample or reference data
+**Prerequisites**:
+- VS Code Insiders with GitHub Copilot
+- Python 3.8+ with dependencies installed
+- Vector database populated with profile data
 
-README.md    → Project overview
+**Quick Test**:
+1. Open VS Code Insiders in this project
+2. Open Copilot Chat (`Ctrl+Alt+I`)
+3. Type: `@workspace Query my digital twin: "What are your skills?"`
+
+**Detailed Testing Guide**: See [docs/VSCODE_AGENT_TESTING_GUIDE.md](docs/VSCODE_AGENT_TESTING_GUIDE.md)
+
+**Quick Checklist**: See [docs/QUICK_TEST_CHECKLIST.md](docs/QUICK_TEST_CHECKLIST.md)
 
 

@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 export default function HomePage() {
   return (
     <div style={{ padding: '2rem', fontFamily: 'system-ui', maxWidth: '1200px', margin: '0 auto' }}>
@@ -8,33 +6,6 @@ export default function HomePage() {
         This is an MCP (Model Context Protocol) server that provides RAG (Retrieval-Augmented Generation) 
         functionality for querying professional profile information.
       </p>
-      
-      <div style={{ 
-        background: '#f0f9ff', 
-        border: '2px solid #0284c7', 
-        padding: '1.5rem', 
-        borderRadius: '8px', 
-        marginTop: '2rem',
-        marginBottom: '2rem'
-      }}>
-        <h2 style={{ marginTop: 0 }}>🎯 Try the Interview Experience</h2>
-        <p>Experience the AI-powered interview system in action</p>
-        <Link 
-          href="/interview" 
-          style={{
-            display: 'inline-block',
-            background: '#0284c7',
-            color: 'white',
-            padding: '12px 24px',
-            borderRadius: '6px',
-            textDecoration: 'none',
-            fontWeight: 'bold',
-            marginTop: '1rem'
-          }}
-        >
-          Launch Interview System →
-        </Link>
-      </div>
 
       <h2>Available Tools:</h2>
       <ul>
