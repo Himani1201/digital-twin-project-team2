@@ -291,7 +291,7 @@ MIT License - feel free to use this project as a reference or starting point for
 
 - Reference architecture from [Roll Dice MCP Server](https://github.com/gocallum/rolldice-mcpserver.git)
 - RAG implementation inspired by [Digital Twin Python Reference](https://github.com/gocallum/binal_digital-twin_py.git)
-- Built as part of coursework at [Your University]
+- Built as part of internship project at Ausbiz Consulting
 
 ---
 
