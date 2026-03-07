@@ -235,6 +235,31 @@ const results = await index.query({
 });
 ```
 
+## 👤 Author
+
+**Archana Mukunthamani** - *Primary Developer & Sole Contributor*
+
+- 🎯 Complete system architecture and implementation
+- 🧠 RAG pipeline development with Upstash Vector and Groq LLM
+- 🎤 Technical interview simulator feature
+- 🌐 Web UI design and development
+- 🚀 Vercel deployment and production configuration
+- 📊 94% of all commits and entire core functionality
+
+**GitHub**: [@archana-mukunthamani](https://github.com/archana-mukunthamani)
+
+### Acknowledgments
+
+This project was initially started as a team project. Special thanks to:
+- **Himani1201** - Initial repository setup and README template
+- **vivian** - Initial AGENTS.md documentation file
+
+*Note: After initial setup, this project was designed, developed, and completed entirely by Archana Mukunthamani.*
+
+---
+
+**Built with ❤️ by Archana Mukunthamani**
+
 ## 🎓 Learning Outcomes
 
 This project demonstrates proficiency in:
